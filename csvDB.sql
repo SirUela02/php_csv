@@ -11,7 +11,29 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for csv
+CREATE DATABASE IF NOT EXISTS `csv` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `csv`;
+
+-- Dumping structure for table csv.continentes
+CREATE TABLE IF NOT EXISTS `continentes` (
+  `id` varchar(50) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- Data exporting was unselected.
+
+-- Dumping structure for table csv.paises
+CREATE TABLE IF NOT EXISTS `paises` (
+  `id` varchar(50) NOT NULL DEFAULT '',
+  `nombre` varchar(100) NOT NULL DEFAULT '',
+  `continente` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `FK_paises_continentes` (`continente`),
+  CONSTRAINT `FK_paises_continentes` FOREIGN KEY (`continente`) REFERENCES `continentes` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Data exporting was unselected.
 
